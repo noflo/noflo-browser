@@ -7,6 +7,8 @@
   "dependencies": {
     "noflo/noflo": "*",
     "noflo/noflo-runtime-iframe": "*",
+    "noflo/noflo-runtime-webrtc": "*",
+    "noflo/noflo-runtime": "*",
     "noflo/noflo-ajax": "*",
     "noflo/noflo-core": "*",
     "noflo/noflo-css": "*",
