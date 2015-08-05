@@ -3,17 +3,70 @@
   <head>
     <meta charset="utf-8">
     <title>everything</title>
+    <script src="http://cdn.rawgit.com/rtc-io/rtc/v3.1.1/dist/rtc.js"></script>
     <script src="everything.js"></script>
+    <script src="./noflo-noflo-runtime-iframe/runtime/network.js"></script>
   </head>
   <body>
+    <a id='flowhub_debug_url'>Debug in Flowhub</a>
     <p id='main'>Hello World</p>
     <script>
       var noflo = require('noflo');
+      var webrtcRuntime = require('noflo-runtime-webrtc');
+      var iframeRuntime = window.NofloIframeRuntime; //require('noflo-runtime-iframe');
+
+      function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+        var results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+      }
+
       noflo.graph.loadJSON(require('noflo-browser-everything/graphs/everything.json'), function (graph) {
         graph.baseDir = '/noflo-browser-everything';
-        noflo.createNetwork(graph, function (network) {
-          console.log('everything is running!');
-        });
+
+        var queryProtocol = getParameterByName('fbp_protocol');
+        var queryAddress = getParameterByName('fbp_address');
+        var queryNoLoad = getParameterByName('fbp_noload');
+
+        var runtimeOptions = {
+            baseDir: graph.baseDir
+        };
+        if (queryNoLoad.toLowerCase() !== 'true') {
+            runtimeOptions.defaultGraph = graph;
+        };
+        if (!queryProtocol) {
+            queryProtocol = 'webrtc';
+        }
+
+        var rt = null;
+        if (queryProtocol == 'webrtc') {
+          if (queryAddress) {
+            // ID to use specified from outside, normally by Flowhub IDE
+            rt = webrtcRuntime(queryAddress, runtimeOptions, true);
+          } else {
+            // Generate new ID
+            rt = webrtcRuntime(null, runtimeOptions, true);
+            rt.signaller = 'https://api.flowhub.io';
+          }
+          var ide = 'https://app.flowhub.io';
+          var debugUrl = ide+'#runtime/endpoint?'+encodeURIComponent('protocol=webrtc&address='+rt.signaller+'#'+rt.id);
+          console.log('Debug URL', debugUrl);
+          document.getElementById('flowhub_debug_url').href = debugUrl;
+        } else if (queryProtocol == 'iframe') {
+          if (iframeRuntime) {
+            rt = iframeRuntime(runtimeOptions);
+          }
+        }
+
+        if (rt) {
+          rt.network.on('addnetwork', function () {
+            console.log('everything is running!');
+          });
+          rt.start();
+        } else {
+          console.log('Warning: unable to create FBP runtime');
+        }
       });
     </script>
   </body>
