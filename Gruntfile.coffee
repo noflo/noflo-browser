@@ -14,6 +14,13 @@ module.exports = ->
           'package.json': ['graphs/*', 'components/*']
 
     # Browser build of NoFlo
+    'bower-install-simple':
+      deps:
+        options:
+          interactive: false
+          forceLatest: false
+          directory: 'browser/bower_components'
+
     noflo_browser:
       everything:
         options:
@@ -26,6 +33,18 @@ module.exports = ->
               color: #ffffff;
             }
             </style>"""
+          ,
+            """<script>
+            requirejs.config({
+              packages: [
+                {
+                  name: 'React',
+                  location: './bower_components/react',
+                  main: 'react'
+                }
+              ]
+            });
+            </script>"""
           ]
         files:
           "browser/everything.js": ['component.json']
@@ -39,6 +58,7 @@ module.exports = ->
         dest: 'browser/manifest.appcache'
         src: [
           'everything.*'
+          'bower_components/*'
         ]
 
     'string-replace':
@@ -64,6 +84,7 @@ module.exports = ->
       src: '**/*'
 
   # Grunt plugins used for building
+  @loadNpmTasks 'grunt-bower-install-simple'
   @loadNpmTasks 'grunt-noflo-manifest'
   @loadNpmTasks 'grunt-noflo-browser'
   @loadNpmTasks 'grunt-manifest'
@@ -76,6 +97,7 @@ module.exports = ->
 
   # Our local tasks
   @registerTask 'build', 'Build NoFlo for the chosen target platform', (target = 'all') =>
+    @task.run 'bower-install-simple'
     @task.run 'noflo_manifest'
     @task.run 'noflo_browser'
     @task.run 'manifest'

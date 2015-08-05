@@ -1,0 +1,21 @@
+{
+  "name": "noflo-browser",
+  "homepage": "https://github.com/noflo/noflo-browser",
+  "authors": [
+    "Jon Nordby <jononor@gmail.com>"
+  ],
+  "description": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "components",
+    "Gruntfile.coffee",
+    "spec"
+  ],
+  "dependencies": {
+    "requirejs": "~2.1.11",
+    "react": "~0.12.2"
+  }
+}
