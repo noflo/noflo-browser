@@ -23,6 +23,18 @@ body {
 }
 </style>
     
+        <script>
+requirejs.config({
+  packages: [
+    {
+      name: 'React',
+      location: './bower_components/react',
+      main: 'react'
+    }
+  ]
+});
+</script>
+    
   </head>
   <body>
     <a id='flowhub_debug_url' target="_blank" class='nodebug'>Debug in Flowhub</a>
