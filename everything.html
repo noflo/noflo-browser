@@ -6,10 +6,27 @@
     <script src="http://cdn.rawgit.com/rtc-io/rtc/v3.1.1/dist/rtc.js"></script>
     <script src="everything.js"></script>
     <script src="./noflo-noflo-runtime-iframe/runtime/network.js"></script>
+    <style>
+    #flowhub_debug_url.nodebug {
+      display: none;
+    }
+    #flowhub_debug_url.debug {
+      display: inherit;
+    }
+    </style>
+    
+        <style>
+body {
+  padding: 0px;
+  margin: 0px;
+  color: #ffffff;
+}
+</style>
+    
   </head>
   <body>
-    <a id='flowhub_debug_url'>Debug in Flowhub</a>
-    <p id='main'>Hello World</p>
+    <a id='flowhub_debug_url' target="_blank" class='nodebug'>Debug in Flowhub</a>
+    <!-- default -->
     <script>
       var noflo = require('noflo');
       var webrtcRuntime = require('noflo-runtime-webrtc');
@@ -51,8 +68,10 @@
           }
           var ide = 'https://app.flowhub.io';
           var debugUrl = ide+'#runtime/endpoint?'+encodeURIComponent('protocol=webrtc&address='+rt.signaller+'#'+rt.id);
+          var debugButton = document.getElementById('flowhub_debug_url');
           console.log('Debug URL', debugUrl);
-          document.getElementById('flowhub_debug_url').href = debugUrl;
+          debugButton.className = "debug";
+          debugButton.href = debugUrl;
         } else if (queryProtocol == 'iframe') {
           if (iframeRuntime) {
             rt = iframeRuntime(runtimeOptions);
