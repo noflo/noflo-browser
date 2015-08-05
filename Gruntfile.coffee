@@ -17,7 +17,7 @@ module.exports = ->
     noflo_browser:
       everything:
         options:
-          debug: false
+          debug: true
         files:
           "browser/everything.js": ['component.json']
 
