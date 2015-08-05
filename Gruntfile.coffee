@@ -39,7 +39,7 @@ module.exports = ->
         options:
           replacements: [
             pattern: '<html>'
-            replacement: '<html manifest="/manifest.appcache">'
+            replacement: '<html manifest="/noflo-browser/manifest.appcache">'
           ]
 
     'gh-pages':
