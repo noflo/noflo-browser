@@ -26,7 +26,7 @@
     "grunt": "~0.4.1",
     "grunt-gh-pages": "^0.9.1",
     "grunt-manifest": "^0.4.0",
-    "grunt-noflo-browser": "^0.1.8",
+    "grunt-noflo-browser": "^0.1.10",
     "grunt-noflo-manifest": "~0.1.11",
     "grunt-string-replace": "^1.2.0"
   },

@@ -18,6 +18,15 @@ module.exports = ->
       everything:
         options:
           debug: true
+          heads: [
+            """<style>
+            body {
+              padding: 0px;
+              margin: 0px;
+              color: #ffffff;
+            }
+            </style>"""
+          ]
         files:
           "browser/everything.js": ['component.json']
 
