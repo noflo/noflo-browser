@@ -3,7 +3,7 @@
         "name": "main",
         "environment": {
             "type": "noflo-browser",
-            "content": "<p id='main'>Hello World</p>"
+            "content": "<!-- default -->"
         },
         "icon": ""
     },
