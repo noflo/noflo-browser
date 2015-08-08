@@ -58,7 +58,7 @@ module.exports = ->
         dest: 'browser/manifest.appcache'
         src: [
           'everything.*'
-          'bower_components/*'
+          'bower_components/*/*'
         ]
 
     'string-replace':
