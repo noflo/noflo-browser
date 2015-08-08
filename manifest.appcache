@@ -1,11 +1,20 @@
 CACHE MANIFEST
-# Time: Sat Aug 08 2015 16:41:14 GMT+0000 (UTC)
+# Time: Sat Aug 08 2015 16:50:29 GMT+0000 (UTC)
 
 CACHE:
 everything.html
 everything.js
-bower_components/react
-bower_components/requirejs
+bower_components/react/JSXTransformer.js
+bower_components/react/LICENSE
+bower_components/react/PATENTS
+bower_components/react/bower.json
+bower_components/react/react-with-addons.js
+bower_components/react/react-with-addons.min.js
+bower_components/react/react.js
+bower_components/react/react.min.js
+bower_components/requirejs/README.md
+bower_components/requirejs/bower.json
+bower_components/requirejs/require.js
 
 NETWORK:
 *
