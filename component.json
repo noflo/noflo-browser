@@ -1,6 +1,7 @@
 {
   "name": "noflo-browser-everything",
   "description": "NoFlo build for browser containing everything known",
+  "version": "0.2.0",
   "author": "Jon Nordby <jononor@gmail.com>",
   "repo": "noflo/noflo-browser",
   "keywords": [],
