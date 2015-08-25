@@ -92,3 +92,7 @@
     return runtime;
   };
 })(window);
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = window.NofloIframeRuntime;
+}

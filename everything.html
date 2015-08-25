@@ -5,7 +5,6 @@
     <title>everything</title>
     <script src="http://cdn.rawgit.com/rtc-io/rtc/v3.1.1/dist/rtc.js"></script>
     <script src="everything.js"></script>
-    <script src="./noflo-noflo-runtime-iframe/runtime/network.js"></script>
     <style>
     #flowhub_debug_url.nodebug {
       display: none;
@@ -41,8 +40,6 @@ requirejs.config({
     <!-- default -->
     <script>
       var noflo = require('noflo');
-      var webrtcRuntime = require('noflo-runtime-webrtc');
-      var iframeRuntime = window.NofloIframeRuntime; //require('noflo-runtime-iframe');
 
       function getParameterByName(name) {
         name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -70,6 +67,7 @@ requirejs.config({
 
         var rt = null;
         if (queryProtocol == 'webrtc') {
+          var webrtcRuntime = require('noflo-runtime-webrtc');
           if (queryAddress) {
             // ID to use specified from outside, normally by Flowhub IDE
             rt = webrtcRuntime(queryAddress, runtimeOptions, true);
@@ -85,9 +83,8 @@ requirejs.config({
           debugButton.className = "debug";
           debugButton.href = debugUrl;
         } else if (queryProtocol == 'iframe') {
-          if (iframeRuntime) {
-            rt = iframeRuntime(runtimeOptions);
-          }
+          var iframeRuntime = require('noflo-runtime-iframe');
+          rt = iframeRuntime(runtimeOptions);
         }
 
         if (rt) {
