@@ -34,6 +34,8 @@ module.exports = ->
             }
             </style>"""
           ,
+            """<script src="./bower_components/coffee-script/extras/coffee-script.js"></script>"""
+          ,
             """
             <script src="./bower_components/requirejs/require.js"></script>
             <script>

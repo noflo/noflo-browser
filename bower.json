@@ -15,6 +15,7 @@
     "spec"
   ],
   "dependencies": {
+    "coffee-script": "*",
     "requirejs": "~2.1.11",
     "react": "~0.12.2"
   }
