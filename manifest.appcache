@@ -1,9 +1,25 @@
 CACHE MANIFEST
-# Time: Tue Aug 25 2015 17:42:00 GMT+0000 (UTC)
+# Time: Thu Aug 27 2015 17:01:55 GMT+0000 (UTC)
 
 CACHE:
 everything.html
 everything.js
+bower_components/coffee-script/CNAME
+bower_components/coffee-script/CONTRIBUTING.md
+bower_components/coffee-script/Cakefile
+bower_components/coffee-script/LICENSE
+bower_components/coffee-script/README.md
+bower_components/coffee-script/bin
+bower_components/coffee-script/bower.json
+bower_components/coffee-script/documentation
+bower_components/coffee-script/examples
+bower_components/coffee-script/extras
+bower_components/coffee-script/index.html
+bower_components/coffee-script/lib
+bower_components/coffee-script/package.json
+bower_components/coffee-script/register.js
+bower_components/coffee-script/repl.js
+bower_components/coffee-script/src
 bower_components/react/JSXTransformer.js
 bower_components/react/LICENSE
 bower_components/react/PATENTS
