@@ -34,7 +34,9 @@ module.exports = ->
             }
             </style>"""
           ,
-            """<script>
+            """
+            <script src="./bower_components/requirejs/require.js"></script>
+            <script>
             requirejs.config({
               packages: [
                 {
