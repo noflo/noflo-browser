@@ -1,7 +1,7 @@
 {
   "name": "noflo-browser",
   "description": "Reference browser build of NoFlo",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "author": {
     "name": "Jon Nordby",
     "email": "jononor@gmail.com"
