@@ -53,7 +53,10 @@ requirejs.config({
         return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
       }
 
-      noflo.graph.loadJSON(require('noflo-browser-everything/graphs/everything.json'), function (graph) {
+      noflo.graph.loadJSON(require('noflo-browser-everything/graphs/everything.json'), function (err, graph) {
+        if (arguments.length == 1) {
+          graph = err; // compat with NoFlo 0.5.x
+        }
         graph.baseDir = '/noflo-browser-everything';
 
         var queryProtocol = getParameterByName('fbp_protocol');
