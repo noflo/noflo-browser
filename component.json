@@ -6,7 +6,7 @@
   "repo": "noflo/noflo-browser",
   "keywords": [],
   "dependencies": {
-    "noflo/noflo": "0.5.22",
+    "noflo/noflo": "0.6.0",
     "noflo/noflo-runtime-iframe": "*",
     "noflo/noflo-runtime-webrtc": "*",
     "noflo/noflo-runtime": "*",
