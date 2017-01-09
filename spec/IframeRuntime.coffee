@@ -100,3 +100,38 @@ describe 'IFRAME runtime', ->
         runtime.once 'error', receiveError
         runtime.on 'execution', receive
         runtime.stop()
+    describe 'with React Todo graph', ->
+      graph = null
+      before (done) ->
+        unless runtime.isConnected()
+          return done new Error "Not connected to runtime"
+        done()
+      it 'should be able to send the graph to runtime', (done) ->
+        @timeout 4000
+        noflo.graph.loadFile './fixtures/ReactTodo.json', (err, g) ->
+          return done err if err
+          graph = g
+          runtimeClient.connection.sendGraph graph, runtime, done
+      it 'should be able to start the graph', (done) ->
+        receive = (msg) ->
+          if msg.running
+            runtime.removeListener 'error', receiveError
+            runtime.removeListener 'execution', receive
+            done()
+        receiveError = (err) ->
+          done err
+        runtime.once 'error', receiveError
+        runtime.on 'execution', receive
+        runtime.setMain graph
+        runtime.start()
+      it 'should be able to stop the graph', (done) ->
+        receive = (msg) ->
+          unless msg.running
+            runtime.removeListener 'error', receiveError
+            runtime.removeListener 'execution', receive
+            done()
+        receiveError = (err) ->
+          done err
+        runtime.once 'error', receiveError
+        runtime.on 'execution', receive
+        runtime.stop()

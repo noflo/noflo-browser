@@ -1,0 +1,638 @@
+{
+    "properties": {
+        "name": "ReactTodoExample",
+        "id": "ReactTodoExample",
+        "environment": {
+            "type": "noflo-browser"
+        }
+    },
+    "inports": {},
+    "outports": {},
+    "groups": [
+        {
+            "name": "Create TODO",
+            "nodes": [
+                "NewText",
+                "CreateTodo",
+                "GenerateId",
+                "AddTodo",
+                "SetText",
+                "SetId"
+            ],
+            "metadata": {
+                "description": ""
+            }
+        },
+        {
+            "name": "Rendering",
+            "nodes": [
+                "Render",
+                "DropErrors",
+                "UpdatedList",
+                "GetContainer",
+                "PrepareProps",
+                "SetList"
+            ],
+            "metadata": {
+                "description": ""
+            }
+        },
+        {
+            "name": "Dispatching",
+            "nodes": [
+                "Dispatch",
+                "IgnoredActions"
+            ],
+            "metadata": {
+                "description": ""
+            }
+        },
+        {
+            "name": "TODO Store",
+            "nodes": [
+                "SendStore",
+                "DelayedSend",
+                "InitialStore"
+            ],
+            "metadata": {
+                "description": ""
+            }
+        }
+    ],
+    "processes": {
+        "Render": {
+            "component": "react/Render",
+            "metadata": {
+                "label": "Render",
+                "x": 1800,
+                "y": 180
+            }
+        },
+        "Dispatch": {
+            "component": "routers/GroupRouter",
+            "metadata": {
+                "label": "Dispatch",
+                "x": -36,
+                "y": 180
+            }
+        },
+        "IgnoredActions": {
+            "component": "core/Drop",
+            "metadata": {
+                "label": "IgnoredActions",
+                "x": 72,
+                "y": 576
+            }
+        },
+        "DropErrors": {
+            "component": "core/Drop",
+            "metadata": {
+                "label": "DropErrors",
+                "x": 1908,
+                "y": 648
+            }
+        },
+        "GetContainer": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "GetContainer",
+                "x": 1584,
+                "y": 180
+            }
+        },
+        "InitialStore": {
+            "component": "strings/ParseJson",
+            "metadata": {
+                "label": "InitialStore",
+                "x": -36,
+                "y": 828
+            }
+        },
+        "SendStore": {
+            "component": "core/Kick",
+            "metadata": {
+                "label": "SendStore",
+                "x": 288,
+                "y": 828
+            }
+        },
+        "DelayedSend": {
+            "component": "core/RepeatAsync",
+            "metadata": {
+                "label": "DelayedSend",
+                "x": 396,
+                "y": 828
+            }
+        },
+        "CreateTodo": {
+            "component": "objects/CreateObject",
+            "metadata": {
+                "label": "CreateTodo",
+                "x": 504,
+                "y": 180
+            }
+        },
+        "SetText": {
+            "component": "objects/SetPropertyValue",
+            "metadata": {
+                "label": "SetText",
+                "x": 684,
+                "y": 180
+            }
+        },
+        "GenerateId": {
+            "component": "objects/GetCurrentTimestamp",
+            "metadata": {
+                "label": "GenerateId",
+                "x": 684,
+                "y": 324
+            }
+        },
+        "SetId": {
+            "component": "objects/SetPropertyValue",
+            "metadata": {
+                "label": "SetId",
+                "x": 864,
+                "y": 180
+            }
+        },
+        "NewText": {
+            "component": "core/Split",
+            "metadata": {
+                "label": "NewText",
+                "x": 360,
+                "y": 324
+            }
+        },
+        "AddTodo": {
+            "component": "objects/SetPropertyValue",
+            "metadata": {
+                "label": "AddTodo",
+                "x": 1008,
+                "y": 324
+            }
+        },
+        "SetList": {
+            "component": "objects/SetPropertyValue",
+            "metadata": {
+                "label": "SetList",
+                "x": 1584,
+                "y": 396
+            }
+        },
+        "PrepareProps": {
+            "component": "objects/CreateObject",
+            "metadata": {
+                "label": "PrepareProps",
+                "x": 1440,
+                "y": 468
+            }
+        },
+        "UpdatedList": {
+            "component": "core/Merge",
+            "metadata": {
+                "label": "UpdatedList",
+                "x": 1296,
+                "y": 396
+            }
+        },
+        "RemoveTodo": {
+            "component": "objects/RemoveProperty",
+            "metadata": {
+                "label": "RemoveTodo",
+                "x": 504,
+                "y": 540
+            }
+        }
+    },
+    "connections": [
+        {
+            "src": {
+                "process": "Dispatch",
+                "port": "missed"
+            },
+            "tgt": {
+                "process": "IgnoredActions",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 1
+            }
+        },
+        {
+            "src": {
+                "process": "Render",
+                "port": "error"
+            },
+            "tgt": {
+                "process": "DropErrors",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 1
+            }
+        },
+        {
+            "src": {
+                "process": "Render",
+                "port": "event"
+            },
+            "tgt": {
+                "process": "Dispatch",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "GetContainer",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "Render",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 9
+            }
+        },
+        {
+            "src": {
+                "process": "InitialStore",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "SendStore",
+                "port": "data"
+            },
+            "metadata": {
+                "route": 6
+            }
+        },
+        {
+            "src": {
+                "process": "SendStore",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "DelayedSend",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 6
+            }
+        },
+        {
+            "src": {
+                "process": "Dispatch",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "NewText",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "NewText",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "SetText",
+                "port": "value"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "NewText",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "GenerateId",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "CreateTodo",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "SetText",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "SetText",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "SetId",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "GenerateId",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "AddTodo",
+                "port": "property"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "SetId",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "AddTodo",
+                "port": "value"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "DelayedSend",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "AddTodo",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 6
+            }
+        },
+        {
+            "src": {
+                "process": "PrepareProps",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "SetList",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 5
+            }
+        },
+        {
+            "src": {
+                "process": "AddTodo",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "UpdatedList",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 6
+            }
+        },
+        {
+            "src": {
+                "process": "UpdatedList",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "SetList",
+                "port": "value"
+            },
+            "metadata": {
+                "route": 6
+            }
+        },
+        {
+            "src": {
+                "process": "SetList",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Render",
+                "port": "props"
+            },
+            "metadata": {
+                "route": 5
+            }
+        },
+        {
+            "src": {
+                "process": "Dispatch",
+                "port": "route"
+            },
+            "tgt": {
+                "process": "SendStore",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "NewText",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "CreateTodo",
+                "port": "start"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "UpdatedList",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "SendStore",
+                "port": "data"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "GenerateId",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "SetId",
+                "port": "value"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "DelayedSend",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "RemoveTodo",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 6
+            }
+        },
+        {
+            "src": {
+                "process": "Dispatch",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "RemoveTodo",
+                "port": "property"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "RemoveTodo",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "RemoveTodo",
+                "port": "reset"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "RemoveTodo",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "UpdatedList",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 6
+            }
+        },
+        {
+            "src": {
+                "process": "UpdatedList",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "PrepareProps",
+                "port": "start"
+            },
+            "metadata": {
+                "route": 6
+            }
+        },
+        {
+            "data": "body",
+            "tgt": {
+                "process": "GetContainer",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "{}",
+            "tgt": {
+                "process": "InitialStore",
+                "port": "in"
+            }
+        },
+        {
+            "data": false,
+            "tgt": {
+                "process": "SetText",
+                "port": "keep"
+            }
+        },
+        {
+            "data": "text",
+            "tgt": {
+                "process": "SetText",
+                "port": "property"
+            }
+        },
+        {
+            "data": false,
+            "tgt": {
+                "process": "SetId",
+                "port": "keep"
+            }
+        },
+        {
+            "data": false,
+            "tgt": {
+                "process": "SetList",
+                "port": "keep"
+            }
+        },
+        {
+            "data": "items",
+            "tgt": {
+                "process": "SetList",
+                "port": "property"
+            }
+        },
+        {
+            "data": false,
+            "tgt": {
+                "process": "AddTodo",
+                "port": "keep"
+            }
+        },
+        {
+            "data": "id",
+            "tgt": {
+                "process": "SetId",
+                "port": "property"
+            }
+        },
+        {
+            "data": "create,remove",
+            "tgt": {
+                "process": "Dispatch",
+                "port": "routes"
+            }
+        },
+        {
+            "data": "https://noflojs.org/react-example/react/Todo.js",
+            "tgt": {
+                "process": "Render",
+                "port": "module"
+            }
+        }
+    ]
+}
