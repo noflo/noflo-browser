@@ -1,6 +1,11 @@
 language: node_js
 node_js:
 - '0.10'
+before_install:
+  - wget https://s3-us-west-2.amazonaws.com/cdn.thegrid.io/caliper/libvips/libccv-0.1.1.tar.gz
+  - mkdir $HOME/libccv
+  - echo $HOME/libccv
+  - tar -xvzf libccv-0.1.1.tar.gz -C $HOME/libccv
 before_script:
 - npm install -g grunt-cli
 after_success:
@@ -12,8 +17,13 @@ addons:
     sources:
     - ubuntu-toolchain-r-test
     packages:
-    - g++-4.8
+    - libpng-dev
+    - libatlas-base-dev
+    - libblas-dev
     - libcairo2-dev
+    - libjpeg8-dev
+    - libpango1.0-dev
     - libgif-dev
     - graphicsmagick
-    - libjpeg8-dev
+    - build-essential
+    - g++-4.8
