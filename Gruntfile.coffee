@@ -46,13 +46,13 @@ module.exports = ->
             """<script src="https://cdnjs.cloudflare.com/ajax/libs/coffee-script/1.7.1/coffee-script.min.js"></script>"""
           ,
             """
-            <script src="../node_modules/requirejs/require.js"></script>
+            <script src="vendor/requirejs/require.js"></script>
             <script>
             requirejs.config({
               packages: [
                 {
                   name: 'React',
-                  location: '../node_modules/react/dist',
+                  location: 'vendor/react'
                   main: 'react'
                 }
               ]
@@ -61,6 +61,22 @@ module.exports = ->
           ]
         files:
           "browser/everything.js": ['package.json']
+
+    copy:
+      vendor:
+        files: [
+          expand: true
+          cwd: 'node_modules/react/dist'
+          src: '*.js'
+          dest: 'browser/vendor/react'
+          filter: 'isFile'
+        ,
+          expand: true
+          cwd: 'node_modules/requirejs'
+          src: '*.js'
+          dest: 'browser/vendor/requirejs'
+          filter: 'isFile'
+        ]
 
     manifest:
       cache:
@@ -71,8 +87,7 @@ module.exports = ->
         dest: 'browser/manifest.appcache'
         src: [
           'everything.*'
-          'node_modules/requirejs/require.js'
-          'node_modules/react/dist/react.js'
+          'vendor/*/**.js'
         ]
 
     'string-replace':
@@ -99,6 +114,7 @@ module.exports = ->
 
   # Grunt plugins used for building
   @loadNpmTasks 'grunt-noflo-browser'
+  @loadNpmTasks 'grunt-contrib-copy'
   @loadNpmTasks 'grunt-manifest'
   @loadNpmTasks 'grunt-string-replace'
 
@@ -110,6 +126,7 @@ module.exports = ->
   # Our local tasks
   @registerTask 'build', 'Build NoFlo for the chosen target platform', (target = 'all') =>
     @task.run 'noflo_browser'
+    @task.run 'copy'
     @task.run 'manifest'
     @task.run 'string-replace:manifest'
 
