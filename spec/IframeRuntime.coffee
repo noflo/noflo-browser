@@ -1,7 +1,9 @@
+runtimeClient = require 'noflo-runtime'
+protocolClient = require 'fbp-protocol-client'
+noflo = require 'noflo'
+
 describe 'IFRAME runtime', ->
-  iframe = null
-  origin = null
-  listener = null
+  runtime = null
 
   send = (protocol, command, payload) ->
     msg =
@@ -16,57 +18,85 @@ describe 'IFRAME runtime', ->
     fixtureContainer = document.getElementById('fixtures')
     if !fixtureContainer
       return done(new Error('Fixture container not found'))
-    iframeElement = document.createElement('iframe')
-    iframeElement.sandbox = 'allow-scripts'
-    iframeElement.src = '../browser/everything.html?fbp_noload=true&fbp_protocol=iframe'
-
-    iframeElement.onload = ->
-      iframe = iframeElement.contentWindow
-      setTimeout (->
+    transport = protocolClient.getTransport 'iframe'
+    runtime = new transport
+      address: '../browser/everything.html?fbp_noload=true&fbp_protocol=iframe'
+      protocol: 'iframe'
+    runtime.setParentElement fixtureContainer
+    runtime.once 'connected', ->
+      setTimeout ->
         done()
-      ), 100
-
-    origin = window.location.origin
-    fixtureContainer.appendChild iframeElement
+      , 100
+    runtime.connect()
   describe 'Runtime Protocol', ->
     describe 'requesting runtime metadata', ->
+      before (done) ->
+        unless runtime.isConnected()
+          return done new Error "Not connected to runtime"
+        done()
       it 'should provide it back', (done) ->
         @timeout 4000
-
-        listener = (message) ->
-          window.removeEventListener 'message', listener, false
-          listener = null
-          msg = JSON.parse(message.data)
-          chai.expect(msg.protocol).to.equal 'runtime'
+        runtime.once 'runtime', (msg) ->
           chai.expect(msg.command).to.equal 'runtime'
           chai.expect(msg.payload).to.be.an 'object'
           chai.expect(msg.payload.type).to.equal 'noflo-browser'
           chai.expect(msg.payload.capabilities).to.be.an 'array'
           done()
-
-        window.addEventListener 'message', listener, false
-        send 'runtime', 'getruntime', ''
+        runtime.sendRuntime 'getruntime', {}
+    
   describe 'Component Protocol', ->
     describe 'requesting component listing', ->
+      before (done) ->
+        unless runtime.isConnected()
+          return done new Error "Not connected to runtime"
+        done()
       it 'should provide it back', (done) ->
         @timeout 40000
         received = 0
-        if listener
-          return done(new Error('Previous test still listening, abort'))
-
-        listener = (message) ->
-          msg = JSON.parse(message.data)
-          if msg.protocol != 'component'
-            return
+        receive = (msg) ->
           if msg.command == 'component'
             chai.expect(msg.payload).to.be.an 'object'
             received++
           if msg.command == 'componentsready'
             chai.expect(msg.payload).to.equal received
             chai.expect(received).to.be.above 5
-            window.removeEventListener 'message', listener, false
-            listener = null
+            runtime.removeListener 'component', receive
             done()
-
-        window.addEventListener 'message', listener, false
-        send 'component', 'list', 'bar'
+        runtime.on 'component', receive
+        runtime.sendComponent 'list'
+  describe 'fixture graph running', ->
+    describe 'with Clock graph', ->
+      graph = null
+      before (done) ->
+        unless runtime.isConnected()
+          return done new Error "Not connected to runtime"
+        done()
+      it 'should be able to send the graph to runtime', (done) ->
+        @timeout 4000
+        noflo.graph.loadFile './fixtures/Clock.json', (err, g) ->
+          return done err if err
+          graph = g
+          runtimeClient.connection.sendGraph graph, runtime, done
+      it 'should be able to start the graph', (done) ->
+        receive = (msg) ->
+          if msg.running
+            runtime.removeListener 'error', receiveError
+            runtime.removeListener 'execution', receive
+            done()
+        receiveError = (err) ->
+          done err
+        runtime.once 'error', receiveError
+        runtime.on 'execution', receive
+        runtime.setMain graph
+        runtime.start()
+      it 'should be able to stop the graph', (done) ->
+        receive = (msg) ->
+          unless msg.running
+            runtime.removeListener 'error', receiveError
+            runtime.removeListener 'execution', receive
+            done()
+        receiveError = (err) ->
+          done err
+        runtime.once 'error', receiveError
+        runtime.on 'execution', receive
+        runtime.stop()
