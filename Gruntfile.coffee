@@ -6,25 +6,34 @@ module.exports = ->
   @initConfig
     pkg: @file.readJSON 'package.json'
 
-    # Updating the package manifest files
-    noflo_manifest:
-      update:
-        files:
-          'component.json': ['graphs/*', 'components/*']
-          'package.json': ['graphs/*', 'components/*']
-
-    # Browser build of NoFlo
-    'bower-install-simple':
-      deps:
-        options:
-          interactive: false
-          forceLatest: false
-          directory: 'browser/bower_components'
-
     noflo_browser:
       everything:
         options:
           debug: true
+          webpack:
+            externals:
+              'repl': 'commonjs repl' # somewhere inside coffee-script
+              'module': 'commonjs module' # somewhere inside coffee-script
+              'child_process': 'commonjs child_process' # somewhere inside coffee-script
+              'jison': 'commonjs jison'
+              'URIjs': 'commonjs urijs'
+              'canvas': 'commonjs canvas'
+              'mimetype': 'commonjs mimetype'
+              'should': 'commonjs should' # used by tests in octo
+              'express': 'commonjs express' # used by tests in octo
+              'highlight': 'commonjs highlight' # used by octo?
+              'microflo-emscripten': 'commonjs microflo-emscripten' # optional?
+              'acorn': 'commonjs acorn' # optional?
+            module:
+              loaders: [
+                { test: /\.coffee$/, loader: "coffee-loader" }
+                { test: /\.json$/, loader: "json-loader" }
+                { test: /\.fbp$/, loader: "fbp-loader" }
+              ]
+            resolve:
+              extensions: ["", ".coffee", ".js"]
+            node:
+              fs: "empty"
           heads: [
             """<style>
             body {
@@ -34,18 +43,16 @@ module.exports = ->
             }
             </style>"""
           ,
-            """<script src="./bower_components/coffee-script/extras/coffee-script.js"></script>"""
-          ,
-            """<script src="../node_modules/babel-core/browser.js"></script>"""
+            """<script src="https://cdnjs.cloudflare.com/ajax/libs/coffee-script/1.7.1/coffee-script.min.js"></script>"""
           ,
             """
-            <script src="./bower_components/requirejs/require.js"></script>
+            <script src="../node_modules/requirejs/require.js"></script>
             <script>
             requirejs.config({
               packages: [
                 {
                   name: 'React',
-                  location: './bower_components/react',
+                  location: '../node_modules/react/dist',
                   main: 'react'
                 }
               ]
@@ -53,7 +60,7 @@ module.exports = ->
             </script>"""
           ]
         files:
-          "browser/everything.js": ['component.json']
+          "browser/everything.js": ['package.json']
 
     manifest:
       cache:
@@ -64,7 +71,8 @@ module.exports = ->
         dest: 'browser/manifest.appcache'
         src: [
           'everything.*'
-          'bower_components/*/*'
+          'node_modules/requirejs/require.js'
+          'node_modules/react/dist/react.js'
         ]
 
     'string-replace':
@@ -90,8 +98,6 @@ module.exports = ->
       src: '**/*'
 
   # Grunt plugins used for building
-  @loadNpmTasks 'grunt-bower-install-simple'
-  @loadNpmTasks 'grunt-noflo-manifest'
   @loadNpmTasks 'grunt-noflo-browser'
   @loadNpmTasks 'grunt-manifest'
   @loadNpmTasks 'grunt-string-replace'
@@ -103,8 +109,6 @@ module.exports = ->
 
   # Our local tasks
   @registerTask 'build', 'Build NoFlo for the chosen target platform', (target = 'all') =>
-    @task.run 'bower-install-simple'
-    @task.run 'noflo_manifest'
     @task.run 'noflo_browser'
     @task.run 'manifest'
     @task.run 'string-replace:manifest'
