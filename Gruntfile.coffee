@@ -9,6 +9,10 @@ module.exports = ->
     noflo_browser:
       everything:
         options:
+          exposed_modules:
+            'noflo': 'noflo'
+            'noflo-runtime-iframe': 'noflo-runtime-iframe'
+            'noflo-runtime-webrtc': 'noflo-runtime-webrtc'
           debug: true
           webpack:
             externals:
@@ -16,7 +20,6 @@ module.exports = ->
               'module': 'commonjs module' # somewhere inside coffee-script
               'child_process': 'commonjs child_process' # somewhere inside coffee-script
               'jison': 'commonjs jison'
-              'URIjs': 'commonjs urijs'
               'canvas': 'commonjs canvas'
               'mimetype': 'commonjs mimetype'
               'should': 'commonjs should' # used by tests in octo
@@ -32,6 +35,8 @@ module.exports = ->
               ]
             resolve:
               extensions: ["", ".coffee", ".js"]
+              alias:
+                URIjs: 'urijs'
             node:
               fs: "empty"
           heads: [
