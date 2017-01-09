@@ -42,7 +42,7 @@
     "noflo-react": "^0.1.1",
     "noflo-routers": "^0.2.2",
     "noflo-runtime": "^0.3.3",
-    "noflo-runtime-iframe": "^0.7.2",
+    "noflo-runtime-iframe": "^0.7.3",
     "noflo-runtime-webrtc": "^0.7.3",
     "noflo-runtime-websocket": "^0.6.2",
     "noflo-seriously": "^0.1.0",
