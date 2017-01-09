@@ -13,6 +13,13 @@ module.exports = ->
             'noflo': 'noflo'
             'noflo-runtime-iframe': 'noflo-runtime-iframe'
             'noflo-runtime-webrtc': 'noflo-runtime-webrtc'
+          manifest:
+            runtimes: [
+              'noflo'
+            ]
+            discover: true
+            recursive: true
+            subdirs: false
           debug: true
           webpack:
             externals:
@@ -105,6 +112,35 @@ module.exports = ->
             replacement: '<html manifest="manifest.appcache">'
           ]
 
+    # CoffeeScript compilation
+    coffee:
+      spec:
+        options:
+          bare: true
+        expand: true
+        cwd: 'spec'
+        src: ['**.coffee']
+        dest: 'spec'
+        ext: '.js'
+    # Web server for the browser tests
+    connect:
+      server:
+        options:
+          port: 8000
+    # BDD tests on browser
+    noflo_browser_mocha:
+      all:
+        options:
+          scripts: ["../browser/everything.js"]
+        files:
+          'spec/runner.html': ['spec/*.js']
+    mocha_phantomjs:
+      all:
+        options:
+          output: 'spec/result.xml'
+          reporter: 'spec'
+          urls: ['http://localhost:8000/spec/runner.html']
+          failWithOutput: true
     'gh-pages':
       options:
         base: 'browser'
@@ -124,6 +160,9 @@ module.exports = ->
   @loadNpmTasks 'grunt-string-replace'
 
   # Grunt plugins used for testing
+  @loadNpmTasks 'grunt-contrib-coffee'
+  @loadNpmTasks 'grunt-contrib-connect'
+  @loadNpmTasks 'grunt-mocha-phantomjs'
 
   # Grunt plugins used for deploying
   @loadNpmTasks 'grunt-gh-pages'
@@ -137,5 +176,9 @@ module.exports = ->
 
   @registerTask 'test', 'Build NoFlo and run automated tests', (target = 'all') =>
     @task.run 'build'
+    @task.run 'coffee'
+    @task.run 'connect'
+    @task.run 'noflo_browser_mocha'
+    @task.run 'mocha_phantomjs'
 
   @registerTask 'default', ['test']
