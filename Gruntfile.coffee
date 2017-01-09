@@ -13,6 +13,8 @@ module.exports = ->
             'noflo': 'noflo'
             'noflo-runtime-iframe': 'noflo-runtime-iframe'
             'noflo-runtime-webrtc': 'noflo-runtime-webrtc'
+            'fbp-protocol-client': 'fbp-protocol-client'
+            'noflo-runtime': 'noflo-runtime'
           manifest:
             runtimes: [
               'noflo'
