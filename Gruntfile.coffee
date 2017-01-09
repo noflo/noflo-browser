@@ -52,7 +52,7 @@ module.exports = ->
               packages: [
                 {
                   name: 'React',
-                  location: 'vendor/react'
+                  location: 'vendor/react',
                   main: 'react'
                 }
               ]
@@ -97,7 +97,7 @@ module.exports = ->
         options:
           replacements: [
             pattern: '<html>'
-            replacement: '<html manifest="/noflo-browser/manifest.appcache">'
+            replacement: '<html manifest="manifest.appcache">'
           ]
 
     'gh-pages':
