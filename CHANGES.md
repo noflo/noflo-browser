@@ -3,6 +3,10 @@
 * Switched build from component.io to webpack
 * Installing all dependencies via NPM
 * Update dependencies to latest stable versions, including NoFlo 0.7.9
+* Removed some old modules:
+  - noflo-draggabilly
+  - noflo-prompts
+  - noflo-3dprint
 
 # 0.2.1 (August 8th 2015)
 
