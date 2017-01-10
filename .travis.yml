@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- '0.10'
+- '6'
 before_install:
   - wget https://s3-us-west-2.amazonaws.com/cdn.thegrid.io/caliper/libvips/libccv-0.1.1.tar.gz
   - mkdir $HOME/libccv
