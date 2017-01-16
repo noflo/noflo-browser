@@ -67,7 +67,7 @@ module.exports = ->
                 {
                   name: 'React',
                   location: 'vendor/react',
-                  main: 'react'
+                  main: 'react.min'
                 }
               ]
             });
@@ -81,7 +81,7 @@ module.exports = ->
         files: [
           expand: true
           cwd: 'node_modules/react/dist'
-          src: '*.js'
+          src: 'react.min.js'
           dest: 'browser/vendor/react'
           filter: 'isFile'
         ,
