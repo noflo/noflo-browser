@@ -30,7 +30,7 @@
     "noflo-geometry": "^0.1.0",
     "noflo-github": "0.0.19",
     "noflo-groups": "^0.1.12",
-    "noflo-gum": "^0.1.0",
+    "noflo-gum": "^0.1.1",
     "noflo-image": "^0.2.21",
     "noflo-indexeddb": "^0.1.1",
     "noflo-interaction": "^0.1.1",
