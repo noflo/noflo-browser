@@ -30,6 +30,7 @@ module.exports = ->
               'child_process': 'commonjs child_process' # somewhere inside coffee-script
               'jison': 'commonjs jison'
               'canvas': 'commonjs canvas'
+              'microflo': 'commonjs microflo'
               'mimetype': 'commonjs mimetype'
               'should': 'commonjs should' # used by tests in octo
               'express': 'commonjs express' # used by tests in octo
