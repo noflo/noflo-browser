@@ -67,7 +67,7 @@ module.exports = ->
                 {
                   name: 'React',
                   location: 'vendor/react',
-                  main: 'react'
+                  main: 'react.min'
                 }
               ]
             });
@@ -81,7 +81,7 @@ module.exports = ->
         files: [
           expand: true
           cwd: 'node_modules/react/dist'
-          src: '*.js'
+          src: 'react.min.js'
           dest: 'browser/vendor/react'
           filter: 'isFile'
         ,
@@ -169,6 +169,26 @@ module.exports = ->
   # Grunt plugins used for deploying
   @loadNpmTasks 'grunt-gh-pages'
 
+  grunt = @
+  @registerTask 'checkSize', ->
+    limit = 5000
+    done = @async()
+    require('child_process').exec 'du -k --total browser/*', (err, stdout) ->
+      grunt.fail.fatal err if err
+      lines = stdout.split "\n"
+      entries = {}
+      for line in lines
+        continue unless line.length
+        [kb, entry] = line.split "\t"
+        entries[entry] = parseInt kb
+      if entries.total < limit
+        grunt.log.writeln "Total size for build is #{entries.total}kb, below #{limit}kb max"
+        return done()
+      for entry, size of entries
+        continue if entry is 'total'
+        grunt.log.writeln "Size of #{entry} is #{size}kb"
+      grunt.fail.warn new Error "Total size for build is #{entries.total}kb (>#{limit}kb)"
+
   # Our local tasks
   @registerTask 'build', 'Build NoFlo for the chosen target platform', (target = 'all') =>
     @task.run 'noflo_browser'
@@ -182,5 +202,6 @@ module.exports = ->
     @task.run 'connect'
     @task.run 'noflo_browser_mocha'
     @task.run 'mocha_phantomjs'
+    @task.run 'checkSize'
 
   @registerTask 'default', ['test']
