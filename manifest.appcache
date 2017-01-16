@@ -1,13 +1,9 @@
 CACHE MANIFEST
-# Time: Mon Jan 16 2017 16:18:27 GMT+0000 (UTC)
+# Time: Mon Jan 16 2017 17:44:59 GMT+0000 (UTC)
 
 CACHE:
 everything.html
 everything.js
-vendor/react/JSXTransformer.js
-vendor/react/react-with-addons.js
-vendor/react/react-with-addons.min.js
-vendor/react/react.js
 vendor/react/react.min.js
 vendor/requirejs/require.js
 
