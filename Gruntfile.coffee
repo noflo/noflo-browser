@@ -31,6 +31,7 @@ module.exports = ->
               'jison': 'commonjs jison'
               'canvas': 'commonjs canvas'
               'microflo': 'commonjs microflo'
+              'react': 'amd react'
               'mimetype': 'commonjs mimetype'
               'should': 'commonjs should' # used by tests in octo
               'express': 'commonjs express' # used by tests in octo
