@@ -1,36 +1,15 @@
 CACHE MANIFEST
-# Time: Fri Apr 22 2016 19:38:42 GMT+0000 (UTC)
+# Time: Mon Jan 16 2017 16:18:27 GMT+0000 (UTC)
 
 CACHE:
 everything.html
 everything.js
-bower_components/coffee-script/CNAME
-bower_components/coffee-script/CONTRIBUTING.md
-bower_components/coffee-script/Cakefile
-bower_components/coffee-script/LICENSE
-bower_components/coffee-script/README.md
-bower_components/coffee-script/bin
-bower_components/coffee-script/bower.json
-bower_components/coffee-script/documentation
-bower_components/coffee-script/examples
-bower_components/coffee-script/extras
-bower_components/coffee-script/index.html
-bower_components/coffee-script/lib
-bower_components/coffee-script/package.json
-bower_components/coffee-script/register.js
-bower_components/coffee-script/repl.js
-bower_components/coffee-script/src
-bower_components/react/JSXTransformer.js
-bower_components/react/LICENSE
-bower_components/react/PATENTS
-bower_components/react/bower.json
-bower_components/react/react-with-addons.js
-bower_components/react/react-with-addons.min.js
-bower_components/react/react.js
-bower_components/react/react.min.js
-bower_components/requirejs/README.md
-bower_components/requirejs/bower.json
-bower_components/requirejs/require.js
+vendor/react/JSXTransformer.js
+vendor/react/react-with-addons.js
+vendor/react/react-with-addons.min.js
+vendor/react/react.js
+vendor/react/react.min.js
+vendor/requirejs/require.js
 
 NETWORK:
 *
