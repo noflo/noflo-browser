@@ -1,4 +1,4 @@
-# 0.9.0 (git master)
+# 0.9.0 (March 8 2017)
 
 * Updated NoFlo to 0.8.x
 
