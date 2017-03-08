@@ -8111,8 +8111,7 @@ exports.Primative = (function(superClass) {
     this.props.id = this.uniqueId();
     this.inPorts = new noflo.InPorts(ports);
     this.outPorts = new noflo.OutPorts();
-    this.outPorts[type] = new noflo.OutPort({
-      name: type,
+    this.outPorts.add(type, {
       datatype: 'object'
     });
     this.outPorts[type].on('attach', this.compute.bind(this));
@@ -54081,6 +54080,7 @@ Play = (function(superClass) {
     this.inPorts = {
       audionodes: new noflo.ArrayPort('object')
     };
+    this.outPorts = {};
     this.inPorts.audionodes.on('data', (function(_this) {
       return function(audionodes, i) {
         _this.audionodes[i] = audionodes;
