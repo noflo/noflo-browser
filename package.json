@@ -45,7 +45,7 @@
     "noflo-seriously": "^0.1.0",
     "noflo-strings": "^0.2.0",
     "noflo-tween": "^0.0.1",
-    "noflo-webaudio": "^0.2.1",
+    "noflo-webaudio": "^0.2.2",
     "noflo-websocket": "^0.1.4"
   },
   "devDependencies": {
