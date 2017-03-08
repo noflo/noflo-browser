@@ -21003,6 +21003,9 @@ module.exports = (function(){
             if (_this.abortDebounce) {
               return;
             }
+            if (_this.isRunning()) {
+              return;
+            }
             return _this.setStarted(false);
           };
         })(this), 50);
@@ -83129,6 +83132,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
     if (!config.async) {
       platform.deprecated('noflo.helpers.WirePattern synchronous is deprecated. Please port to Process API');
     }
+    if (config.error !== 'error') {
+      platform.deprecated('noflo.helpers.WirePattern custom error port name is deprecated. Please switch to "error" or port to WirePattern');
+    }
   };
 
   setupControlPorts = function(component, config) {
@@ -83256,7 +83262,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
   populateParams = function(config, input) {
     var idx, j, k, len, len1, paramPort, params, ref, ref1;
     if (!config.params.length) {
-      return;
+      return {};
     }
     params = {};
     ref = config.params;
