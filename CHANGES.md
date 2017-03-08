@@ -1,3 +1,11 @@
+# 0.9.2 (March 8 2017)
+
+* Updated noflo-webaudio to 0.2.2
+
+# 0.9.1 (March 8 2017)
+
+* Updated NoFlo to 0.8.3
+
 # 0.9.0 (March 8 2017)
 
 * Updated NoFlo to 0.8.x
