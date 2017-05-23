@@ -22,7 +22,7 @@
     "noflo-amd": "^0.1.1",
     "noflo-canvas": "^0.2.6",
     "noflo-clmtrackr": "^0.1.0",
-    "noflo-core": "^0.2.3",
+    "noflo-core": "^0.4.0",
     "noflo-css": "^0.0.2",
     "noflo-dom": "^0.1.1",
     "noflo-flow": "^0.4.0",
