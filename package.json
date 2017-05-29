@@ -35,7 +35,7 @@
     "noflo-localstorage": "^0.1.1",
     "noflo-math": "^0.1.0",
     "noflo-objects": "^0.2.0",
-    "noflo-packets": "^0.1.8",
+    "noflo-packets": "^0.2.0",
     "noflo-physics": "^0.1.1",
     "noflo-react": "^0.1.1",
     "noflo-routers": "^0.2.2",
