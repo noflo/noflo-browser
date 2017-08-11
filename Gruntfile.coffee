@@ -11,8 +11,7 @@ module.exports = ->
         options:
           exposed_modules:
             'noflo': 'noflo'
-            'noflo-runtime-iframe': 'noflo-runtime-iframe'
-            'noflo-runtime-webrtc': 'noflo-runtime-webrtc'
+            'noflo-runtime-postmessage': 'noflo-runtime-postmessage'
             'fbp-protocol-client': 'fbp-protocol-client'
             'noflo-runtime': 'noflo-runtime'
           manifest:
