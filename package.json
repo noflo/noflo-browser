@@ -31,7 +31,7 @@
     "noflo-gum": "^0.1.1",
     "noflo-image": "^0.2.21",
     "noflo-indexeddb": "^0.1.1",
-    "noflo-interaction": "^0.1.1",
+    "noflo-interaction": "^0.2.1",
     "noflo-localstorage": "^0.1.1",
     "noflo-math": "^0.1.0",
     "noflo-objects": "^0.2.0",
