@@ -28,7 +28,7 @@
     "noflo-flow": "^0.4.0",
     "noflo-geometry": "^0.1.0",
     "noflo-groups": "^0.1.12",
-    "noflo-gum": "^0.1.1",
+    "noflo-gum": "^0.2.0",
     "noflo-image": "^0.2.21",
     "noflo-indexeddb": "^0.2.1",
     "noflo-interaction": "^0.2.2",
