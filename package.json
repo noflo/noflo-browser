@@ -17,7 +17,7 @@
   "dependencies": {
     "fbp-protocol-client": "^0.1.8",
     "noflo": "^0.8.3",
-    "noflo-adapters": "^0.1.5",
+    "noflo-adapters": "^0.2.0",
     "noflo-ajax": "^0.2.0",
     "noflo-amd": "^0.1.1",
     "noflo-canvas": "^0.2.6",
