@@ -45,7 +45,7 @@
     "noflo-strings": "^0.3.0",
     "noflo-tween": "^0.0.1",
     "noflo-webaudio": "^0.2.2",
-    "noflo-websocket": "^0.1.4"
+    "noflo-websocket": "^0.2.0"
   },
   "devDependencies": {
     "chai": "^4.0.0",
