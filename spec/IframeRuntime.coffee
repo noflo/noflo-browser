@@ -85,6 +85,10 @@ describe 'IFRAME runtime', ->
             done()
         receiveError = (err) ->
           done err
+        runtime.on 'network', (msg) ->
+          return unless msg.command is 'error'
+          receiveError new Error msg.payload.message
+          done = ->
         runtime.once 'error', receiveError
         runtime.on 'execution', receive
         runtime.setMain graph
@@ -121,6 +125,10 @@ describe 'IFRAME runtime', ->
         receiveError = (err) ->
           done err
         runtime.once 'error', receiveError
+        runtime.on 'network', (msg) ->
+          return unless msg.command is 'error'
+          receiveError new Error msg.payload.message
+          done = ->
         runtime.on 'execution', receive
         runtime.setMain graph
         runtime.start()
