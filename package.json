@@ -43,7 +43,7 @@
     "noflo-runtime-postmessage": "^0.8.2",
     "noflo-strings": "^0.3.0",
     "noflo-tween": "^0.1.0",
-    "noflo-webaudio": "^0.2.2",
+    "noflo-webaudio": "^0.3.0",
     "noflo-websocket": "^0.2.0"
   },
   "devDependencies": {
