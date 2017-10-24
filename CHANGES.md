@@ -1,3 +1,11 @@
+# 0.10.0 (October 24 2017)
+
+* Updated all NoFlo component libraries to be fully compatible with the .8 API
+* Removed unmaintained noflo-seriously library
+* Switched from noflo-runtime-iframe to noflo-runtime-postmessage
+* Updated build to include original source code for all NoFlo components for better "view source" experience with Flowhub
+* Added convenience scripts `npm run build` and `npm start` for running locally
+
 # 0.9.2 (March 8 2017)
 
 * Updated noflo-webaudio to 0.2.2
