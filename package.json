@@ -54,7 +54,7 @@
     "coffee-script": "^1.12.2",
     "fbp-loader": "^0.1.1",
     "grunt": "^1.0.1",
-    "grunt-contrib-coffee": "^1.0.0",
+    "grunt-contrib-coffee": "^2.0.0",
     "grunt-contrib-connect": "^1.0.2",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-gh-pages": "^2.0.0",
