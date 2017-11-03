@@ -43,7 +43,7 @@
     "noflo-routers": "^0.3.0",
     "noflo-runtime": "^0.5.2",
     "noflo-runtime-postmessage": "^0.8.4",
-    "noflo-strings": "^0.3.0",
+    "noflo-strings": "^0.4.0",
     "noflo-tween": "^0.1.0",
     "noflo-webaudio": "^0.3.4",
     "noflo-websocket": "^0.2.0"
