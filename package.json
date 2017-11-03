@@ -32,7 +32,7 @@
     "noflo-groups": "^0.2.0",
     "noflo-gum": "^0.2.0",
     "noflo-image": "^0.3.0",
-    "noflo-indexeddb": "^0.2.1",
+    "noflo-indexeddb": "^0.3.0",
     "noflo-interaction": "^0.2.6",
     "noflo-localstorage": "^0.2.1",
     "noflo-math": "^0.2.0",
