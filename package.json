@@ -41,7 +41,7 @@
     "noflo-physics": "^0.3.0",
     "noflo-react": "^0.3.0",
     "noflo-routers": "^0.4.0",
-    "noflo-runtime": "^0.5.2",
+    "noflo-runtime": "^0.6.0",
     "noflo-runtime-postmessage": "^0.9.0",
     "noflo-strings": "^0.4.0",
     "noflo-tween": "^0.2.0",
@@ -51,6 +51,7 @@
   "devDependencies": {
     "chai": "^4.0.0",
     "coffee-script": "^1.12.7",
+    "coffeescript": "^2.0.2",
     "grunt": "^1.0.1",
     "grunt-contrib-coffee": "^2.0.0",
     "grunt-contrib-connect": "^1.0.2",
