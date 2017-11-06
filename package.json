@@ -17,7 +17,7 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "fbp-protocol-client": "^0.1.8",
+    "fbp-protocol-client": "^0.2.0",
     "noflo": "^0.8.6",
     "noflo-adapters": "^0.2.1",
     "noflo-ajax": "^0.2.0",
