@@ -83,8 +83,11 @@ describe 'IFRAME runtime', ->
             runtime.removeListener 'error', receiveError
             runtime.removeListener 'execution', receive
             done()
+            done = ->
         receiveError = (err) ->
+          console.log err
           done err
+          done = ->
         runtime.on 'network', (msg) ->
           return unless msg.command is 'error'
           receiveError new Error msg.payload.message
