@@ -51,7 +51,8 @@ module.exports = ->
                 use: [
                   loader: 'coffee-loader'
                   options:
-                    presets: ['es2015']
+                    transpile:
+                      presets: ['es2015']
                 ]
               ,
                 test: /\.fbp$/
