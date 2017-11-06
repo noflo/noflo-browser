@@ -39,7 +39,7 @@
     "noflo-objects": "^0.4.0",
     "noflo-packets": "^0.3.0",
     "noflo-physics": "^0.2.0",
-    "noflo-react": "^0.2.0",
+    "noflo-react": "^0.3.0",
     "noflo-routers": "^0.4.0",
     "noflo-runtime": "^0.5.2",
     "noflo-runtime-postmessage": "^0.8.4",
