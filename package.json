@@ -41,7 +41,7 @@
     "noflo-physics": "^0.2.0",
     "noflo-react": "^0.2.0",
     "noflo-routers": "^0.3.0",
-    "noflo-runtime": "^0.5.2",
+    "noflo-runtime": "^0.6.0",
     "noflo-runtime-postmessage": "^0.8.4",
     "noflo-strings": "^0.3.0",
     "noflo-tween": "^0.1.0",
