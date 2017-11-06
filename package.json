@@ -20,7 +20,7 @@
     "fbp-protocol-client": "^0.1.8",
     "noflo": "^1.0.0",
     "noflo-adapters": "^0.2.1",
-    "noflo-ajax": "^0.2.0",
+    "noflo-ajax": "^0.3.0",
     "noflo-amd": "^0.2.0",
     "noflo-canvas": "^0.4.0",
     "noflo-clmtrackr": "^0.2.0",
