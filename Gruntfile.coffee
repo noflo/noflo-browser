@@ -37,10 +37,23 @@ module.exports = ->
               'highlight': 'commonjs highlight' # used by octo?
               'microflo-emscripten': 'commonjs microflo-emscripten' # optional?
               'acorn': 'commonjs acorn' # optional?
+              'temp': 'commonjs temp'
             module:
               rules: [
+                test: /noflo([\\]+|\/)lib([\\]+|\/)(.*)\.js$|noflo([\\]+|\/)components([\\]+|\/)(.*)\.js$|fbp-graph([\\]+|\/)lib([\\]+|\/)(.*)\.js$|noflo-runtime-([a-z]+)([\\]+|\/)(.*).js$/
+                use: [
+                  loader: 'babel-loader'
+                  options:
+                    presets: ['es2015']
+                ]
+              ,
                 test: /\.coffee$/
-                use: ["coffee-loader"]
+                use: [
+                  loader: 'coffee-loader'
+                  options:
+                    transpile:
+                      presets: ['es2015']
+                ]
               ,
                 test: /\.fbp$/
                 use: ["fbp-loader"]
