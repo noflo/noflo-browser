@@ -6,91 +6,8 @@ module.exports = ->
   @initConfig
     pkg: @file.readJSON 'package.json'
 
-    noflo_browser:
-      everything:
-        options:
-          exposed_modules:
-            'noflo': 'noflo'
-            'noflo-runtime-postmessage': 'noflo-runtime-postmessage'
-            'fbp-protocol-client': 'fbp-protocol-client'
-            'noflo-runtime': 'noflo-runtime'
-          manifest:
-            runtimes: [
-              'noflo'
-            ]
-            discover: true
-            recursive: true
-            subdirs: false
-          debug: true
-          webpack:
-            externals:
-              'repl': 'commonjs repl' # somewhere inside coffee-script
-              'module': 'commonjs module' # somewhere inside coffee-script
-              'child_process': 'commonjs child_process' # somewhere inside coffee-script
-              'jison': 'commonjs jison'
-              'canvas': 'commonjs canvas'
-              'microflo': 'commonjs microflo'
-              'react': 'amd react'
-              'mimetype': 'commonjs mimetype'
-              'should': 'commonjs should' # used by tests in octo
-              'express': 'commonjs express' # used by tests in octo
-              'highlight': 'commonjs highlight' # used by octo?
-              'microflo-emscripten': 'commonjs microflo-emscripten' # optional?
-              'acorn': 'commonjs acorn' # optional?
-              'temp': 'commonjs temp'
-            module:
-              rules: [
-                test: /noflo([\\]+|\/)lib([\\]+|\/)(.*)\.js$|noflo([\\]+|\/)components([\\]+|\/)(.*)\.js$|fbp-graph([\\]+|\/)lib([\\]+|\/)(.*)\.js$|noflo-runtime-([a-z]+)([\\]+|\/)(.*).js$/
-                use: [
-                  loader: 'babel-loader'
-                  options:
-                    presets: ['es2015']
-                ]
-              ,
-                test: /\.coffee$/
-                use: [
-                  loader: 'coffee-loader'
-                  options:
-                    transpile:
-                      presets: ['es2015']
-                ]
-              ,
-                test: /\.fbp$/
-                use: ["fbp-loader"]
-              ]
-            resolve:
-              extensions: [".coffee", ".js"]
-              alias:
-                URIjs: 'urijs'
-            node:
-              fs: "empty"
-          heads: [
-            """<style>
-            body {
-              padding: 0px;
-              margin: 0px;
-              color: #ffffff;
-            }
-            </style>"""
-          ,
-            """<script src="https://cdnjs.cloudflare.com/ajax/libs/coffee-script/1.7.1/coffee-script.min.js"></script>"""
-          ,
-            """
-            <script src="vendor/requirejs/require.js"></script>
-            <script>
-            requirejs.config({
-              packages: [
-                {
-                  name: 'React',
-                  location: 'vendor/react',
-                  main: 'react.min'
-                }
-              ]
-            });
-            </script>"""
-          ]
-        files:
-          "browser/everything.js": ['package.json']
+    webpack:
+      build: require './webpack.config.js'
 
     copy:
       vendor:
@@ -172,7 +89,7 @@ module.exports = ->
       src: '**/*'
 
   # Grunt plugins used for building
-  @loadNpmTasks 'grunt-noflo-browser'
+  @loadNpmTasks 'grunt-webpack'
   @loadNpmTasks 'grunt-contrib-copy'
   @loadNpmTasks 'grunt-manifest'
   @loadNpmTasks 'grunt-string-replace'
@@ -207,7 +124,7 @@ module.exports = ->
 
   # Our local tasks
   @registerTask 'build', 'Build NoFlo for the chosen target platform', (target = 'all') =>
-    @task.run 'noflo_browser'
+    @task.run 'webpack'
     @task.run 'copy'
     @task.run 'manifest'
     @task.run 'string-replace:manifest'
@@ -216,7 +133,6 @@ module.exports = ->
     @task.run 'build'
     @task.run 'coffee'
     @task.run 'connect'
-    @task.run 'noflo_browser_mocha'
     @task.run 'mocha_phantomjs'
     @task.run 'checkSize'
 

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html manifest="manifest.appcache">
+  <head>
+    <meta charset="utf-8">
+    <title>NoFlo browser runtime</title>
+    <script src="everything.js"></script>
+    <style>
+    #flowhub_debug_url.nodebug {
+      display: none;
+    }
+    #flowhub_debug_url.debug {
+      display: block;
+      position: fixed;
+      z-index: 999;
+      right: 36px;
+      top: 36px;
+      background-color: hsla(210, 98%, 46%, .8) !important;
+      border-color: hsl(210, 98%, 46%) !important;
+      color: white !important;
+      text-decoration: none;
+      padding: 8px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: sans-serif;
+    }
+    body {
+      padding: 0px;
+      margin: 0px;
+      color: #ffffff;
+    }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/coffee-script/1.7.1/coffee-script.min.js"></script>
+    <script src="vendor/requirejs/require.js"></script>
+    <script>
+    requirejs.config({
+      packages: [
+        {
+          name: 'React',
+          location: 'vendor/react',
+          main: 'react.min'
+        }
+      ]
+    });
+    </script>
+  </head>
+  <body>
+    <a id='flowhub_debug_url' target="_blank" class='nodebug'>Debug in Flowhub</a>
+    <script>
+      function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+        var results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+      }
+
+      var queryProtocol = getParameterByName('fbp_protocol');
+      var queryNoLoad = getParameterByName('fbp_noload');
+
+      var runtimeOptions = {
+        baseDir: 'browser',
+        defaultPermissions: [
+          'protocol:graph',
+          'protocol:component',
+          'protocol:network',
+          'protocol:runtime',
+          'component:getsource',
+          'component:setsource'
+        ]
+      };
+      if (!queryProtocol) {
+        queryProtocol = 'opener';
+      }
+
+      var rt = null;
+      var postMessageRuntime = require('noflo-runtime-postmessage');
+      if (queryProtocol == 'opener') {
+        var ide = 'https://app.flowhub.io';
+        var debugUrl = ide+'#runtime/endpoint?'+encodeURIComponent('protocol=opener&address='+window.location.href);
+        var debugButton = document.getElementById('flowhub_debug_url');
+        debugButton.className = "debug";
+        debugButton.href = debugUrl;
+        rt = postMessageRuntime.opener(runtimeOptions, debugButton);
+      } else if (queryProtocol == 'iframe') {
+        rt = postMessageRuntime.iframe(runtimeOptions);
+      }
+    </script>
+  </body>
+</html>

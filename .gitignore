@@ -1,9 +1,8 @@
-browser/
+browser/*.js
+browser/*.appcache
+browser/vendor/
 gh-pages/
 node_modules/
-components/
-bower_components/
 /spec/*.js
 /spec/*.xml
-/spec/*.html
 fbp.json
