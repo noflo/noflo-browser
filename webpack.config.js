@@ -1,9 +1,14 @@
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
 module.exports = {
   entry: './webpack.entry.js',
   output: {
     path: __dirname,
     filename: 'browser/everything.js',
   },
+  plugins: [
+    new UglifyJSPlugin()
+  ],
   module: {
     rules: [
       {
