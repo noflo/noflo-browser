@@ -1,6 +1,12 @@
-# 0.10.1 (November 17 2017)
+# 1.0.1 (November 17 2017)
 
 * Updated noflo-flow to version 0.7.0
+
+# 1.0.0 (November 7 2010)
+
+* Updated to NoFlo 1.0
+* Updated all NoFlo component libraries to be fully compatible with 1.0
+* Switched builds to run directly with webpack instead of grunt
 
 # 0.10.0 (October 24 2017)
 
