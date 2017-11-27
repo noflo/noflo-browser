@@ -37,7 +37,7 @@
     "noflo-interaction": "^0.3.0",
     "noflo-localstorage": "^0.3.0",
     "noflo-math": "^0.3.0",
-    "noflo-objects": "^0.4.0",
+    "noflo-objects": "^0.5.0",
     "noflo-packets": "^0.3.0",
     "noflo-physics": "^0.3.0",
     "noflo-react": "^0.3.0",
