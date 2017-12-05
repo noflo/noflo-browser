@@ -13,8 +13,8 @@ module.exports = ->
       vendor:
         files: [
           expand: true
-          cwd: 'node_modules/react/dist'
-          src: 'react.min.js'
+          cwd: 'node_modules/react/umd'
+          src: 'react.production.min.js'
           dest: 'browser/vendor/react'
           filter: 'isFile'
         ,
