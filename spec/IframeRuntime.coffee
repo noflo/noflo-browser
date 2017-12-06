@@ -15,12 +15,13 @@ describe 'IFRAME runtime', ->
 
   before (done) ->
     @timeout 20000
-    fixtureContainer = document.getElementById('fixtures')
+    fixtureContainer = document.createElement('div')
+    document.body.appendChild fixtureContainer
     if !fixtureContainer
       return done(new Error('Fixture container not found'))
     transport = protocolClient.getTransport 'iframe'
     runtime = new transport
-      address: '../browser/everything.html?fbp_noload=true&fbp_protocol=iframe'
+      address: '/base/browser/everything.html?fbp_noload=true&fbp_protocol=iframe'
       protocol: 'iframe'
     runtime.setParentElement fixtureContainer
     runtime.once 'connected', ->
@@ -73,7 +74,7 @@ describe 'IFRAME runtime', ->
         done()
       it 'should be able to send the graph to runtime', (done) ->
         @timeout 4000
-        noflo.graph.loadFile './fixtures/Clock.json', (err, g) ->
+        noflo.graph.loadFile '/base/spec/fixtures/Clock.json', (err, g) ->
           return done err if err
           graph = g
           runtimeClient.connection.sendGraph graph, runtime, done
@@ -115,7 +116,7 @@ describe 'IFRAME runtime', ->
         done()
       it 'should be able to send the graph to runtime', (done) ->
         @timeout 4000
-        noflo.graph.loadFile './fixtures/ReactTodo.json', (err, g) ->
+        noflo.graph.loadFile '/base/spec/fixtures/ReactTodo.json', (err, g) ->
           return done err if err
           graph = g
           runtimeClient.connection.sendGraph graph, runtime, done
