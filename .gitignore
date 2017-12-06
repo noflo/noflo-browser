@@ -3,6 +3,5 @@ browser/*.appcache
 browser/vendor/
 gh-pages/
 node_modules/
-/spec/*.js
 /spec/*.xml
 fbp.json
