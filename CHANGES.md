@@ -1,3 +1,9 @@
+# 1.1.0 (February 20 2018)
+
+* Updated noflo to version 1.1.1
+* Updated noflo-component-loader to enable execution of ES6 components on browsers that support it
+* Updated several component libraries
+
 # 1.0.1 (November 17 2017)
 
 * Updated noflo-flow to version 0.7.0
