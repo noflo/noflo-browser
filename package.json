@@ -47,7 +47,7 @@
     "noflo-strings": "^0.4.0",
     "noflo-tween": "^0.2.0",
     "noflo-webaudio": "^0.4.0",
-    "noflo-websocket": "^0.3.0"
+    "noflo-websocket": "^0.4.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
