@@ -1,3 +1,8 @@
+# 1.2.0 (March 22 2018)
+
+* Compatibility with FBP Protocol version 0.7
+* Now built with webpack 4.x for a smaller payload size
+
 # 1.1.0 (February 20 2018)
 
 * Updated noflo to version 1.1.1
