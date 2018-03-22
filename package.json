@@ -43,7 +43,7 @@
     "noflo-react": "^0.3.0",
     "noflo-routers": "^0.4.0",
     "noflo-runtime": "^0.6.0",
-    "noflo-runtime-postmessage": "^0.9.0",
+    "noflo-runtime-postmessage": "^0.10.0",
     "noflo-strings": "^0.4.0",
     "noflo-tween": "^0.2.0",
     "noflo-webaudio": "^0.4.0",
