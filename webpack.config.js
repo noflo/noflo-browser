@@ -39,7 +39,7 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              presets: ['es2015'],
+              presets: ['@babel/preset-env'],
             }
           }
         ]
@@ -51,7 +51,7 @@ module.exports = {
             loader: 'coffee-loader',
             options: {
               transpile: {
-                presets: ['es2015']
+                presets: ['@babel/preset-env'],
               }
             }
           }
