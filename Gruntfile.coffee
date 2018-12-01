@@ -47,26 +47,11 @@ module.exports = ->
             replacement: '<html manifest="manifest.appcache">'
           ]
 
-    'gh-pages':
-      options:
-        base: 'browser'
-        clone: 'gh-pages'
-        message: "Release #{pkg.name} #{process.env.TRAVIS_TAG}"
-        repo: repo
-        user:
-          name: 'NoFlo bot'
-          email: 'bot@noflo.org'
-        silent: true
-      src: '**/*'
-
   # Grunt plugins used for building
   @loadNpmTasks 'grunt-webpack'
   @loadNpmTasks 'grunt-contrib-copy'
   @loadNpmTasks 'grunt-manifest'
   @loadNpmTasks 'grunt-string-replace'
-
-  # Grunt plugins used for deploying
-  @loadNpmTasks 'grunt-gh-pages'
 
   # Our local tasks
   @registerTask 'build', 'Build NoFlo for the chosen target platform', (target = 'all') =>
