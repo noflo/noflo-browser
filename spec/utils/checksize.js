@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const { exec } = require('child_process');
 const limit = 5000;
-exec('du -k --total browser/*', (err, stdout) => {
+exec('du -k --total browser/* --exclude *.map', (err, stdout) => {
   if (err) {
     console.error(err);
     process.exit(1);

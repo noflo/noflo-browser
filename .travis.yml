@@ -15,15 +15,16 @@ script:
 - npm test
 - node spec/utils/checksize.js
 deploy:
-  provider: script
+  provider: pages
   skip_cleanup: true
-  script: grunt gh-pages
+  github-token: $GH_TOKEN
+  local-dir: browser
+  keep-history: true
+  committer-from-gh: true
   on:
     tags: true
     repo: noflo/noflo-browser
 env:
-  matrix:
-  - CXX=g++-4.8
   global:
     secure: mXwYeFfEjRsB31W5sorAjBXNPc2ZqV1IabgGv4fx8nmLGJ2KVCg7FRtJxPkshCxUMbn69S5JR12HcKWsFNY4uF0un7On70ggcq1+TpRFh8VkDr2KuRTsxW0NuZE3SO/xx7fxMQ98woHnW1FqLrQMhlZLDdW+OSVrx8/sJ4Xql3oZgt/n3VGaIQuJ6D9cvx/TT8WqxF+cEunm1T0eHpjtVTEKQHFDsOtztWJR/tHDrxpP0J8OrpEXtdFGXXbS8od4wCSJ0qmZXPfuD7cQgwwMLa3FnHxC5B4SOcjOagr8cr269BTSdV8CN5udVb8g2vuvF33T/Q7KFZKd/G9ue1w+7unyAG6MZT6cN3uzL5JwsAsU9C8fRF94yD7Q3dfkI+UMssf0kt3zfBU/XgvJJQ4mzoaouGcgdB2/jn0PbQrECUfILhG4/c7Y/6hQUjxJelc2hunXkY7QwOuRi4xNGsTgEZwBT7pZmPXRwOABZwdo/4WU6y4vTKINyX4f4di/bIOtewoTT+tYwab9A7xqka8SUTyc1FHuQyzAww9BK4TGjaWxKP7dYPmLdKWzGPUhEKwzsNBIKvB6g5vIULb6T7x4/UXOlI7hKnM1rUOpiYLto4RV4LJlIksUKpaC8z/dtmKko3qThXWNJc9tF6trCEUjV03xXfgAh1ohsV0/euVwYLk=
 addons:
