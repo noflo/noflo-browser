@@ -1,4 +1,5 @@
 browser/*.js
+browser/*.map
 browser/*.appcache
 browser/vendor/
 gh-pages/
