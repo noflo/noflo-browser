@@ -8,9 +8,7 @@ before_install:
 - echo $HOME/libccv
 - tar -xvzf libccv-0.1.1.tar.gz -C $HOME/libccv
 before_script:
-- "npm run build"
-- "sudo chown root /opt/google/chrome/chrome-sandbox"
-- "sudo chmod 4755 /opt/google/chrome/chrome-sandbox"
+- npm run build
 script:
 - npm test
 - node spec/utils/checksize.js
