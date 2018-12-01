@@ -5,3 +5,4 @@ gh-pages/
 node_modules/
 /spec/*.xml
 fbp.json
+package-lock.json
