@@ -9,22 +9,6 @@ module.exports = ->
     webpack:
       build: require './webpack.config.js'
 
-    copy:
-      vendor:
-        files: [
-          expand: true
-          cwd: 'node_modules/react/dist'
-          src: 'react.min.js'
-          dest: 'browser/vendor/react'
-          filter: 'isFile'
-        ,
-          expand: true
-          cwd: 'node_modules/requirejs'
-          src: '*.js'
-          dest: 'browser/vendor/requirejs'
-          filter: 'isFile'
-        ]
-
     manifest:
       cache:
         options:
@@ -49,14 +33,12 @@ module.exports = ->
 
   # Grunt plugins used for building
   @loadNpmTasks 'grunt-webpack'
-  @loadNpmTasks 'grunt-contrib-copy'
   @loadNpmTasks 'grunt-manifest'
   @loadNpmTasks 'grunt-string-replace'
 
   # Our local tasks
   @registerTask 'build', 'Build NoFlo for the chosen target platform', (target = 'all') =>
     @task.run 'webpack'
-    @task.run 'copy'
     @task.run 'manifest'
     @task.run 'string-replace:manifest'
 

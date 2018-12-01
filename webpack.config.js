@@ -1,8 +1,13 @@
+const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 module.exports = {
-  entry: './webpack.entry.js',
+  entry: {
+    everything: './webpack.entry.js',
+  },
   output: {
-    path: __dirname,
-    filename: 'browser/everything.js',
+    path: path.resolve(__dirname, 'browser'),
+    filename: '[name].js',
   },
   mode: 'production',
   devtool: 'source-map',
@@ -64,6 +69,20 @@ module.exports = {
       },
     ]
   },
+  plugins: [
+    new CopyWebpackPlugin([
+      {
+        from: 'node_modules/requirejs/*.js',
+        to: 'vendor/requirejs/',
+        flatten: true,
+      },
+      {
+        from: 'node_modules/react/dist/react.min.js',
+        to: 'vendor/react/',
+        flatten: true,
+      },
+    ]),
+  ],
   externals: {
     'canvas': 'commonjs canvas', // Required by noflo-image
   },
