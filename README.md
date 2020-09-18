@@ -1,4 +1,4 @@
-# noflo-browser [![Build Status](https://secure.travis-ci.org/noflo/noflo-browser.png?branch=master)](http://travis-ci.org/noflo/noflo-browser)
+# noflo-browser
 
 A build of [NoFlo](https://noflojs.org) for browser, used as default runtime in [Flowhub](http://app.flowhub.io).
 Deployed to `https://noflojs.org/noflo-browser/everything.html`

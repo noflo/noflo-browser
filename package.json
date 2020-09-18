@@ -15,7 +15,8 @@
     "build": "grunt build",
     "start": "simple-server . 3000",
     "test": "karma start",
-    "postinstall": "noflo-cache-preheat"
+    "postinstall": "noflo-cache-preheat",
+    "posttest": " node spec/utils/checksize.js"
   },
   "dependencies": {
     "fbp-protocol-client": "^0.2.0",
