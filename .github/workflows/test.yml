@@ -15,6 +15,9 @@ jobs:
       uses: actions/setup-node@v2.1.1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: install build dependencies
+      run: |
+        apt-get install -y libpng-dev libatlas-base-dev libblas-dev libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-def graphicksmagick build-essential g++-4.8
     - name: npm install and test
       run: |
         npm install
