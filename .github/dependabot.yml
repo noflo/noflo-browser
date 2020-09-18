@@ -6,6 +6,7 @@ updates:
       interval: daily
     versioning-strategy: increase-if-necessary
     ignore:
+      - dependency-name: "noflo"
       - dependency-name: "noflo-react"
   - package-ecosystem: github-actions
     directory: "/"
