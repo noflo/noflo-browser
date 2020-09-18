@@ -1,0 +1,14 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: daily
+    versioning-strategy: increase-if-necessary
+    ignore:
+      - dependency-name: "noflo"
+      - dependency-name: "noflo-react"
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: daily
