@@ -70,18 +70,20 @@ module.exports = {
     ]
   },
   plugins: [
-    new CopyWebpackPlugin([
-      {
-        from: 'node_modules/requirejs/*.js',
-        to: 'vendor/requirejs/',
-        flatten: true,
-      },
-      {
-        from: 'node_modules/react/dist/react.min.js',
-        to: 'vendor/react/',
-        flatten: true,
-      },
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'node_modules/requirejs/*.js',
+          to: 'vendor/requirejs/',
+          flatten: true,
+        },
+        {
+          from: 'node_modules/react/dist/react.min.js',
+          to: 'vendor/react/',
+          flatten: true,
+        },
+      ],
+    }),
   ],
   externals: {
     'canvas': 'commonjs canvas', // Required by noflo-image
