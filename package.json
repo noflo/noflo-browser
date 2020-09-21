@@ -58,7 +58,7 @@
     "coffee-loader": "^1.0.0",
     "coffee-script": "^1.12.7",
     "coffeescript": "^2.2.1",
-    "copy-webpack-plugin": "^5.0.0",
+    "copy-webpack-plugin": "^6.1.1",
     "fbp-loader": "^0.1.2",
     "grunt": "^1.0.2",
     "grunt-manifest": "^0.4.0",
