@@ -19,7 +19,7 @@
     "posttest": " node spec/utils/checksize.js"
   },
   "dependencies": {
-    "fbp-protocol-client": "^0.2.0",
+    "fbp-protocol-client": "^0.3.0",
     "noflo": "~1.1.1",
     "noflo-adapters": "^0.3.0",
     "noflo-ajax": "^0.3.0",
