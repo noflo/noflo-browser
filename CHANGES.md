@@ -1,3 +1,11 @@
+# 1.2.2 (October 01 2020)
+
+* Added support for [NoFlo Assembly Line](https://github.com/noflo/noflo-assembly)
+
+# 1.2.1 (September 30 2020)
+
+* Updated noflo-canvas library for FBP Protocol compatibility
+
 # 1.2.0 (March 22 2018)
 
 * Compatibility with FBP Protocol version 0.7
