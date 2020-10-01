@@ -38,3 +38,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./browser
           destination_dir: ./${{ env.RELEASE_VERSION }}
+          keep_files: true
