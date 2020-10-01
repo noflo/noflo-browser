@@ -3,6 +3,7 @@ var exported = {
   'noflo-runtime-postmessage': require('noflo-runtime-postmessage'),
   'fbp-protocol-client': require('fbp-protocol-client'),
   'noflo-runtime': require('noflo-runtime'),
+  'noflo-assembly': require('noflo-assembly'),
 };
 
 if (window) {
