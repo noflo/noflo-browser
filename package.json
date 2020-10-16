@@ -31,7 +31,7 @@
     "noflo-core": "^0.6.0",
     "noflo-css": "^0.2.0",
     "noflo-dom": "^0.3.0",
-    "noflo-flow": "^0.7.0",
+    "noflo-flow": "^0.8.0",
     "noflo-geometry": "^0.3.0",
     "noflo-groups": "^0.3.0",
     "noflo-gum": "^0.4.0",
