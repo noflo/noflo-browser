@@ -1,7 +1,4 @@
-browser/*.js
-browser/*.map
-browser/*.appcache
-browser/vendor/
+browser/
 gh-pages/
 node_modules/
 /spec/*.xml
