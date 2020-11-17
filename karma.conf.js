@@ -25,11 +25,6 @@ module.exports = function(config) {
       included: false,
       served: true,
     },
-    {
-      pattern: 'browser/manifest.appcache',
-      included: false,
-      served: true,
-    },
     'spec/*.js',
   ];
 
