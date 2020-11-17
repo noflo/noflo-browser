@@ -1,5 +1,6 @@
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { GenerateSW: GenerateServiceWorker } = require('workbox-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -84,6 +85,7 @@ module.exports = {
         },
       ],
     }),
+    new GenerateServiceWorker(),
   ],
   externals: {
     'canvas': 'commonjs canvas', // Required by noflo-image
