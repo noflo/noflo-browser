@@ -1,5 +1,6 @@
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { GenerateSW: GenerateServiceWorker } = require('workbox-webpack-plugin');
 
 module.exports = {
@@ -85,7 +86,13 @@ module.exports = {
         },
       ],
     }),
-    new GenerateServiceWorker(),
+    new HtmlWebpackPlugin({
+      filename: 'everything.html',
+      template: 'everything.dist.html',
+    }),
+    new GenerateServiceWorker({
+      maximumFileSizeToCacheInBytes: 1000000000,
+    }),
   ],
   externals: {
     'canvas': 'commonjs canvas', // Required by noflo-image
