@@ -1,0 +1,64 @@
+/*!
+ * The buffer module from node.js, for the browser.
+ *
+ * @author   Feross Aboukhadijeh <https://feross.org>
+ * @license  MIT
+ */
+
+/*!
+ * URI.js - Mutating URLs
+ *
+ * Version: 1.19.2
+ *
+ * Author: Rodney Rehm
+ * Web: http://medialize.github.io/URI.js/
+ *
+ * Licensed under
+ *   MIT License http://www.opensource.org/licenses/mit-license
+ *
+ */
+
+/*!
+ * URI.js - Mutating URLs
+ * IPv6 Support
+ *
+ * Version: 1.19.2
+ *
+ * Author: Rodney Rehm
+ * Web: http://medialize.github.io/URI.js/
+ *
+ * Licensed under
+ *   MIT License http://www.opensource.org/licenses/mit-license
+ *
+ */
+
+/*!
+ * URI.js - Mutating URLs
+ * Second Level Domain (SLD) Support
+ *
+ * Version: 1.19.2
+ *
+ * Author: Rodney Rehm
+ * Web: http://medialize.github.io/URI.js/
+ *
+ * Licensed under
+ *   MIT License http://www.opensource.org/licenses/mit-license
+ *
+ */
+
+/*!
+Copyright (C) 2010-2013 Raymond Hill: https://github.com/gorhill/Javascript-Voronoi
+MIT License: See https://github.com/gorhill/Javascript-Voronoi/LICENSE.md
+*/
+
+/*! https://mths.be/punycode v1.4.0 by @mathias */
+
+/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
+
+/*! poly2tri v1.3.5 | (c) 2009-2014 Poly2Tri Contributors */
+
+/*! queue-microtask. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
+
+/*! safe-buffer. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
+
+/*! simple-peer. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
