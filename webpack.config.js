@@ -2,6 +2,7 @@ const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { GenerateSW: GenerateServiceWorker } = require('workbox-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   entry: {
@@ -93,15 +94,25 @@ module.exports = {
     new GenerateServiceWorker({
       maximumFileSizeToCacheInBytes: 1000000000,
     }),
+    new webpack.ProvidePlugin({
+      process: ['process'],
+    }),
   ],
   externals: {
     'canvas': 'commonjs canvas', // Required by noflo-image
   },
   resolve: {
     extensions: [".coffee", ".js"],
-  },
-  node: {
-    child_process: 'empty',
-    fs: 'empty',
-  },
+    fallback: {
+      assert: false,
+      child_process: false,
+      constants: false,
+      events: require.resolve('events/'),
+      fs: false,
+      os: false,
+      path: require.resolve('path-browserify'),
+      process: require.resolve('process'),
+      util: require.resolve('util/'),
+    },
+  }
 };
