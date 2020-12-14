@@ -77,13 +77,11 @@ module.exports = {
       patterns: [
         {
           from: 'node_modules/requirejs/*.js',
-          to: 'vendor/requirejs/',
-          flatten: true,
+          to: 'vendor/requirejs/[name].js',
         },
         {
           from: 'node_modules/react/dist/react.min.js',
-          to: 'vendor/react/',
-          flatten: true,
+          to: 'vendor/react/[name].js',
         },
       ],
     }),
