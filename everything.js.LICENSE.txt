@@ -8,7 +8,7 @@
 /*!
  * URI.js - Mutating URLs
  *
- * Version: 1.19.4
+ * Version: 1.19.5
  *
  * Author: Rodney Rehm
  * Web: http://medialize.github.io/URI.js/
@@ -22,7 +22,7 @@
  * URI.js - Mutating URLs
  * IPv6 Support
  *
- * Version: 1.19.4
+ * Version: 1.19.5
  *
  * Author: Rodney Rehm
  * Web: http://medialize.github.io/URI.js/
@@ -36,7 +36,7 @@
  * URI.js - Mutating URLs
  * Second Level Domain (SLD) Support
  *
- * Version: 1.19.4
+ * Version: 1.19.5
  *
  * Author: Rodney Rehm
  * Web: http://medialize.github.io/URI.js/
