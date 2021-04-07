@@ -60,7 +60,7 @@
     "coffee-loader": "^2.0.0",
     "coffee-script": "^1.12.7",
     "coffeescript": "^2.2.1",
-    "copy-webpack-plugin": "^7.0.0",
+    "copy-webpack-plugin": "^8.1.1",
     "events": "^3.2.0",
     "fbp-loader": "^0.1.2",
     "html-webpack-plugin": "^5.0.0",
