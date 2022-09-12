@@ -33,7 +33,7 @@ jobs:
       - run: echo ::set-env name=RELEASE_VERSION::${GITHUB_REF#refs/*/}
       - run: npm install
       - run: npm run build
-      - uses: peaceiris/actions-gh-pages@v3.7.0-8
+      - uses: peaceiris/actions-gh-pages@v3.8.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./browser
